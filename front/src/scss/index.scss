@@ -54,6 +54,7 @@ html, body{
 body{
     background-color: $dark-purple;
     padding: 0px;
+    color: #fff;
 
     font-size: 16px;
     min-width: 320px;
@@ -72,4 +73,8 @@ img{
     display: block;
     max-width: 100%;
     height: auto;
+}
+
+#root{
+    height: 100%;
 }
