@@ -6,8 +6,9 @@
     font-size: 16px;
     padding: 14px;
     border-radius: 10px;
-    margin-bottom: 1rem;
+    margin-bottom: 0.7rem;
     outline: none;
+    width: 100%;
     &:hover{
         border-color: rgba($accent, .3);
     }
