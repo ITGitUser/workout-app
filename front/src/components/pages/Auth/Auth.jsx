@@ -5,6 +5,9 @@ import Field from '../../ui/Field/Field';
 import Button from '../../ui/Button/Button';
 import styles from './Auth.module.scss'
 import Alert from '../../ui/Alert/Alert';
+import { useMutation } from 'react-query';
+import { $api } from '../../../api/api';
+import Loader from '../../ui/Loader';
 //import { Link } from 'react-router-dom';
 
 const Auth = () => {
@@ -12,12 +15,24 @@ const Auth = () => {
     const [password, setPassword]= React.useState('');
     const [type, setType] = React.useState('auth') //auth||reg
 
+    const {mutate: register, isLoading, error}=useMutation('Registration', ()=>
+    $api({
+        url: '/users',
+        type: 'POST',
+        body: {email, password},
+        auth: false,
+    }), {onSuccess(data){
+        localStorage.setItem('token', data.token);
+        console.log(data);
+    }}
+    );
+
     const handleSubmit = (e) => {
         e.preventDefault();
         if(type==='auth'){
         console.log('auth');
         }else{
-            console.log('reg');
+            register();
         }
     }; 
    
@@ -25,7 +40,8 @@ const Auth = () => {
         <>
         <Layout bgImage={bgImage} heading='Вход || Регистрация'/> 
             <div className='wrapper-inner-page'>
-                {true && <Alert type='warning' text='You have been successsfully'/>}
+                {error && <Alert type='error' text={error}/>}
+                {isLoading && <Loader/>}
                 <form onSubmit={handleSubmit}>
                     <Field
                     type='email'
