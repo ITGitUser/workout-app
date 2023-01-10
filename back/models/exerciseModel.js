@@ -10,8 +10,8 @@ const exerciseSchema=mongoose.Schema(
         type: Number,
         required: true,
     },
-      imageIdx: {
-          type: Number,//поменять на Number!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      imageName: {
+          type: String,
           required: true,
       },
     },{
