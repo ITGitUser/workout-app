@@ -68,6 +68,7 @@ const NewExercise = () => {
                             key={`ex img ${name}`}
                             src={`/uploads/exercises/${name}.svg`} 
                             alt={name}
+                            draggable={false}
                             className={cn({
                                 [styles.active]:imageName === name
                             })}

@@ -15,10 +15,10 @@ const Header = ()  =>{
     <header className={styles.header}>
         {useLocation().pathname!=='/'? (
         <button type='button' onClick={ ()=>{navigate(-1)}}>
-        <img src={arrowImage} alt="Back"/>
+        <img src={arrowImage} alt="Back" draggable={false}/>
     </button>): (
         <button type='button' onClick={()=>{navigate(isAuth?'/profile':'/auth')}}>
-        <img src={isAuth ? authImage: userImage} alt="Auth" height='40'/>
+        <img src={isAuth ? authImage: userImage} alt="Auth" height='40' draggable={false}/>
     </button>
     )
         

@@ -20,7 +20,8 @@ return (
     <button type='button' onClick={()=>setIsComponentVisible(!isComponentVisible)}>
       <img src={isComponentVisible?hamburgerCloseImage:hamburgerImage} 
       alt="Menu" 
-      height='24'/>
+      height='24'
+      draggable={false}/>
     </button>
     <nav className={`${styles.menu} ${isComponentVisible?styles.show:''}`}>
     <ul>

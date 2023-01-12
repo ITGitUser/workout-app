@@ -28,7 +28,7 @@ const Profile = () => {
         style = {{backgroundImage: `url(${bgImage})`, height: 356}}>
             <Header/>
                 <div className={styles.center}>
-                    <img src={userImage} alt='profile' height='56'></img>
+                    <img src={userImage} alt='profile' height='56' draggable={false}></img>
                     {isSuccess && <h1 className={stylesLayout.heading}>{data.email}</h1>}
                 </div>
 
@@ -44,11 +44,11 @@ const Profile = () => {
                 <div className={styles.before_after}>
                     <div>
                         <div className={styles.heading}>До</div>
-                        <img src={afterImage} alt=''></img>
+                        <img src={afterImage} alt='' draggable={false}></img>
                     </div>
                     <div>
                         <div className={styles.heading}>После</div>
-                        <img src={afterImage} alt=''></img>
+                        <img src={afterImage} alt='' draggable={false}></img>
                     </div>
                 </div>
             </div>

@@ -50,7 +50,8 @@ const SingleWorkout = () => {
                                     <img 
                                     src={`/uploads/exercises/${ex.imageName}.svg`} 
                                     height='34' 
-                                    alt=''/>
+                                    alt=''
+                                    draggable={false}/>
                                     </Link>
                                 </div>
                                 {idx%2!==0 && <div className={styles.line}></div>}
