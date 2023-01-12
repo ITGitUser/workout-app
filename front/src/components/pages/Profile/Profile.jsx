@@ -25,7 +25,7 @@ const Profile = () => {
         <>
         <div 
         className={`${stylesLayout.wrapper} ${ stylesLayout.otherPage}`}
-        style = {{backgroundImage: `url(${bgImage})`}}>
+        style = {{backgroundImage: `url(${bgImage})`, height: 356}}>
             <Header/>
                 <div className={styles.center}>
                     <img src={userImage} alt='profile' height='56'></img>
@@ -35,8 +35,7 @@ const Profile = () => {
             {isSuccess  && <Counters
         minutes={data.minutes}
         workouts={data.workouts}
-        kgs={data.kgs}
-        type = 'profile'/>}
+        kgs={data.kgs}/>}
         </div> 
             <div 
             className='wrapper-inner-page'
@@ -44,11 +43,11 @@ const Profile = () => {
             >
                 <div className={styles.before_after}>
                     <div>
-                        <div className={styles.heading}>Before</div>
+                        <div className={styles.heading}>До</div>
                         <img src={afterImage} alt=''></img>
                     </div>
                     <div>
-                        <div className={styles.heading}>After</div>
+                        <div className={styles.heading}>После</div>
                         <img src={afterImage} alt=''></img>
                     </div>
                 </div>

@@ -3,6 +3,7 @@ import Home from "./components/pages/Home/Home";
 import NewExercise from "./components/pages/NewExercise/NewExercise";
 import NewWorkout from "./components/pages/NewWorkout/NewWorkout";
 import Profile from "./components/pages/Profile/Profile";
+import SingleWorkout from "./components/pages/SingleWorkout/SingleWorkout";
 
 export const routes = [
     {
@@ -33,6 +34,12 @@ export const routes = [
         path: '/profile',
         exact: false,
         component: Profile,
+        auth: true
+    },
+    {
+        path: '/workouts/:id',
+        exact: false,
+        component: SingleWorkout,
         auth: true
     }
 ];
