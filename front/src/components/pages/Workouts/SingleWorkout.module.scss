@@ -13,14 +13,18 @@
         color: $white;
         padding: 14px 20px;
         width:  90%;
-        font-size: 20px;
         border-radius: 10px;
-        > a{
+        > a, button{
+            font-size: 20px;
             color: $white;
             text-decoration: none;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            width: 100%;
 
         }
         &.finished{

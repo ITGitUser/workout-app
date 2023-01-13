@@ -16,7 +16,7 @@ export const updateExerciseLog=asyncHandler (async (req,res)=>{
     let newTimes = currentLog.times;
 
 
-    if ( (!timeIndex && timeindex !==0) || !key || (!value && value !==false) ) {
+    if ( (!timeIndex && timeIndex !==0) || !key || (!value && value !==false) ) {
         res.status(404);
         throw new Error('Вы не указали все поля!');
     }

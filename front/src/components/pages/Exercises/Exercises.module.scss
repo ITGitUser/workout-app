@@ -1,0 +1,89 @@
+@import '../../../scss/variables';
+@import '../../../scss//animations';
+.heading{
+    display: flex;
+    align-items: center;
+    >img{
+        margin-right: 9px;
+    }
+}
+
+.wrapper{
+    border-radius: 10px;
+    background-color: $dark-purple;
+
+    margin: 0 auto;
+    width: 90%;
+
+    >.row{
+        display: flex;
+        align-items: center;
+
+        >div{
+            padding: 15px;
+            width: 30%;
+            color: $white;
+            font-size: 16px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+
+            >i,
+            >span,
+            >input{
+                font-size: 18px;
+                color: $white;
+            }
+
+            >input{
+                border: none;
+                outline: none;
+                background-color: transparent;
+                width: 27px;
+                &:first-child{
+                    text-align: right;
+                    animation: opacity 0.4s;
+                }
+            }
+            >i{
+                font-style: normal;
+                margin: 0 2px; 
+            }
+            >.checkbox{
+                cursor:pointer;
+                animation: opacity 0.4s;
+            }
+            &:nth-child(2){
+                width: 50%;
+                border-left: 1px solid $purple;
+                border-right: 1px solid $purple;
+            }
+
+        }
+        &:first-child{
+            border-bottom: 1px solid $purple;
+        }
+        &:last-child>div{
+            padding-bottom: 100px;
+        }
+        &.completed{
+            >div{
+                >i{
+                    margin: 0 -1px;
+                }
+                color: $accent;
+                >input,
+                >i{
+                    text-decoration: line-through;
+                    color: $accent;
+                    cursor: default;
+                }
+            }
+        }
+        .opacity{
+            opacity: 0.7;
+        }
+    }
+}
