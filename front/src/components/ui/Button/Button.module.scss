@@ -13,6 +13,10 @@ $accent-04: rgba($accent, .4);
     background-color: rgba($accent, .4);
     cursor: pointer;
     color: #fff;
+    @media(max-width: $mobile){
+        font-size: 16px;
+        padding: 12px 38px;
+    }
     &:hover{
         background-color: rgba($accent, .7);
     }

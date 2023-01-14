@@ -25,6 +25,9 @@
             border: none;
             cursor: pointer;
             width: 100%;
+            @media(max-width: $mobile){
+                font-size: 18px;
+            }
 
         }
         &.finished{

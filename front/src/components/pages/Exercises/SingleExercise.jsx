@@ -107,17 +107,17 @@ const SingleExercise = () => {
                                     <div className={styles.row}>
                                         <div>
                                             <span>
-                                                Previos
+                                                Prev
                                             </span>
                                         </div>
                                         <div>
                                             <span>
-                                                Repeat&weight
+                                                Вес/Подходы
                                             </span>
                                         </div>
                                         <div>
                                             <span>
-                                                Completed
+                                                Статус
                                             </span>
                                         </div>
                                     </div>
