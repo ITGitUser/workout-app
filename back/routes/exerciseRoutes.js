@@ -11,12 +11,11 @@ router.route('/')
 .get(protect, getExercises)
 .post(protect, createNewExercise)
 .put(protect, updateExercise)
-.delete(protect, deleteExercise);
 router.route('/log')
 .get(protect, getExerciseLogList)
 .post(protect, createNewExerciseLog)
 .put(protect, updateExerciseLog);
 router.route('/log/completed').put(protect, updateCompleteExerciseLog);
 router.route('/log/:id').get(protect, getExerciseLog);
-
+router.route('/:id').delete(protect, deleteExercise);
 export default router;

@@ -6,6 +6,10 @@ const exerciseSchema=mongoose.Schema(
           type: String,
           required: true,
       },
+      userId: {
+        type: String,
+        required: true,
+      },
       times: {
         type: Number,
         required: true,

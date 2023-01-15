@@ -1,4 +1,5 @@
 import Auth from "./components/pages/Auth/Auth";
+import ListExercises from "./components/pages/Exercises/ListExercises";
 import SingleExercise from "./components/pages/Exercises/SingleExercise";
 import Home from "./components/pages/Home/Home";
 import NewExercise from "./components/pages/NewExercise/NewExercise";
@@ -55,6 +56,12 @@ export const routes = [
         path: '/exercise/:id',
         exact: false,
         component: SingleExercise,
+        auth: true
+    },
+    {
+        path: '/exercises',
+        exact: false,
+        component: ListExercises,
         auth: true
     }
 ];
