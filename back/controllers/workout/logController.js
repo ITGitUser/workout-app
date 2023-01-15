@@ -1,9 +1,10 @@
 import asyncHandler from "express-async-handler";
+import { isObjectIdOrHexString, isValidObjectId } from "mongoose";
 import ExerciseLog from "../../models/exerciseLogModel.js";
 import WorkoutLog from "../../models/workoutLogModel.js";
 import Workout from "../../models/workoutModel.js"
 
-//@desc   Create new workout og
+//@desc   Create new workout log
 //@route  POST /api/workouts/log
 //@access Private
 export const createNewWorkoutLog=asyncHandler (async (req,res)=>{
@@ -11,15 +12,17 @@ export const createNewWorkoutLog=asyncHandler (async (req,res)=>{
     
     const user = req.user._id;
 
-    const workout = await Workout.findById(workoutId).populate('exercises');
+    const workOut = await Workout.findById(workoutId).populate('exercises');
 
-    if (workout) {
-        const workoutLog = await WorkoutLog.create({
+    if (workOut) {
+        const workoutLog1 = await WorkoutLog.create({
             user,
-            workout: workoutId,
+            workout: workOut,
+            
         });
+        
 
-        const logs = workout.exercises.map(ex=>{
+        const logs = workOut.exercises.map(ex=>{
             let timesArray=[];
             for (let i = 0; i < ex.times; i++) {
                 timesArray.push({
@@ -32,7 +35,7 @@ export const createNewWorkoutLog=asyncHandler (async (req,res)=>{
                 user,
                 exercise: ex._id,
                 times: timesArray,
-                workoutLog: workoutLog._id,
+                workoutLog: workoutLog1._id,
             };
         });
 
@@ -40,12 +43,13 @@ export const createNewWorkoutLog=asyncHandler (async (req,res)=>{
 
         const exLogIds = createdExLogs.map(log=>log._id);
 
-        const foundWorkoutLog = await WorkoutLog.findById(workoutLog._id);
-
+        const foundWorkoutLog = await WorkoutLog.findById(workoutLog1._id);
+        console.log(foundWorkoutLog);
+ 
         foundWorkoutLog.exerciseLog = exLogIds;
 
         const updateWorkoutLogs =  await foundWorkoutLog.save();
-
+        //console.log(updateWorkoutLogs.workout);
         res.json(updateWorkoutLogs);
     }else{
         res.status(404);

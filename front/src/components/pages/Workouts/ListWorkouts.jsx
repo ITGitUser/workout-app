@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react';
 import bgImage from '../../../images/workout-bg.jpg';
-
+import deleteImage from '../../../images/delete.svg';
 import styles from './SingleWorkout.module.scss'
 import { useMutation, useQuery } from 'react-query';
 import { $api } from '../../../api/api';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Alert from '../../ui/Alert/Alert';
 import Layout from '../../common/Header/Layout';
 import Loader from '../../ui/Loader';
@@ -13,7 +13,7 @@ import Loader from '../../ui/Loader';
 
 const ListWorkouts = () => {
     const navigate = useNavigate();
-    const {data, isSuccess} = useQuery('Get workouts', ()=>
+    const {data, isSuccess, refetch} = useQuery('Get workouts', ()=>
         $api({
             url: `/workouts`,
         }),
@@ -36,6 +36,21 @@ const ListWorkouts = () => {
         navigate(`/workout/${data._id}`);
     }}
     );
+ 
+    const {
+        mutate: deleteWorkout,  
+       //isSuccess: isSuccessMutate, 
+        error: deleteError,
+    }=useMutation('Delete workout', (workId)=>
+    $api({
+        url: `/workouts/${workId}`,
+        type: 'DELETE',
+       // body: {workId},
+    }), {onSuccess(data){
+       refetch();
+       
+    }}
+    );
     return (
         <>
             <Layout bgImage = {bgImage} heading = 'Список тренировок'/>
@@ -48,6 +63,7 @@ const ListWorkouts = () => {
                 {isSuccess ? (
                     <div className={styles.wrapper}>
                         {data.map((workout, idx)=>(
+                            
                                 <div className={styles.item} key={`workout ${idx}`}>
                                     <button 
                                     aria-label='Create new workout'
@@ -56,10 +72,22 @@ const ListWorkouts = () => {
                                         workoutId: workout._id,
                                     })}>
                                         <span>{workout.name}</span>
+                                        
                                     </button>
-                                </div>                               
-                                 
+                                    <img 
+                                    src={deleteImage} 
+                                    height='34' 
+                                    alt='удалить'
+                                    draggable={false}
+                                    onClick={ ()=>
+                                        deleteWorkout( workout._id
+                                        )}/>
+                                        
+                                </div>  
+                                                           
+                           
                         ))}
+                        
                     </div>
                 ):(
                     <Alert type='warning' text='Тренировки не найдены'></Alert>

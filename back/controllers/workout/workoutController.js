@@ -10,6 +10,7 @@ export const createNewWorkout=asyncHandler (async (req,res)=>{
         const workout = await Workout.create({
             name, 
             exercises: exerciseIds,
+            userId: req.user._id,
         });
 
         res.json(workout);
@@ -26,12 +27,11 @@ export const getWorkout=asyncHandler (async (req,res)=>{
     res.json({...workout, minutes});
 });
 
-//@desc   Get workouts
+//@desc   Get workouts linked to the user
 //@route  GET /api/workouts
 //@access Private
 export const getWorkouts = asyncHandler(async (req, res) =>{
-    const workouts = await Workout.find({}).populate('exercises');
-
+    const workouts = await Workout.find({userId: req.user._id}).populate('exercises');
     res.json(workouts);
 });
 
@@ -56,16 +56,16 @@ export const updateWorkout=asyncHandler (async (req,res)=>{
 });
 
 //@desc   Delete workout
-//@route  DELETE /api/workouts
+//@route  DELETE /api/workouts/:id
 //@access Private
 export const deleteWorkout=asyncHandler (async (req,res)=>{
-    const {workoutId} = req.body;
+    //const {workoutId} = req.params.id;
 
-    const workout = await Workout.findById(workoutId);
+    const workout = await Workout.findById(req.params.id);
 
 if(!workout) {
         res.status(404);
-        throw new Error('Данная тренировка не найдена!');
+        throw new Error(`Данная ${req.params.id} тренировка не найдена!`);
     }
 
     await workout.remove();

@@ -8,6 +8,10 @@ const workoutSchema=mongoose.Schema(
           type: String,
           required: true,
       },
+      userId: {
+        type: String,
+        required: true,
+      },
       exercises: [{
         type: ObjectId,
         ref: 'Exercise',

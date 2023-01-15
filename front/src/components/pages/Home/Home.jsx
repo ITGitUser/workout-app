@@ -24,11 +24,11 @@ const Home = () =>{
 
     return (
         <Layout bgImage={bgImage}>
-        <Button text='New' type='main' callback={ ()=>{navigate('/new-workout')} }/>
-        <h1 className={styles.heading}>EXERCISES FOR THE SHOULDERS</h1>
+        <Button text='Создать новую' type='main' callback={ ()=>{navigate('/new-workout')} }/>
+        <h1 className={styles.heading}>Приложение для тренировок</h1>
         {(isSuccess && isAuth) && <Counters
         minutes={data.minutes}
-        workouts={data.workouts}
+        workouts={data.workoutsCount}
         kgs={data.kgs}/>}
         </Layout>
     );

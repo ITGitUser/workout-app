@@ -34,7 +34,7 @@ const Profile = () => {
 
             {isSuccess  && <Counters
         minutes={data.minutes}
-        workouts={data.workouts}
+        workouts={data.workoutsCount}
         kgs={data.kgs}/>}
         </div> 
             <div 

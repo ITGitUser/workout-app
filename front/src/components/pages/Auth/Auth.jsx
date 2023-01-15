@@ -67,11 +67,12 @@ const Auth = () => {
                 <form onSubmit={handleSubmit}>
                     <Field
                     type='email'
-                    placeholder = 'Введите email'
+                    placeholder = 'Введите e-mail'
                     value = {email}
                     onChange = {e => setEmail(e.target.value)}
                     required/>
                     <Field
+                    type='password'
                     placeholder = 'Введите пароль'
                     value = {password}
                     onChange = {e => setPassword(e.target.value)}

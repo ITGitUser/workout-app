@@ -19,7 +19,7 @@
         font-size: 14px;
         box-shadow:  $bx-16;
         border-radius: 10px 0 10px 10px;
-        min-width: 116px;
+        min-width: 130px;
         display: none;
         animation: opacity 0.4s;
         &.show{
@@ -27,14 +27,16 @@
         }
         > ul{
             list-style: none;
-            a{
+            >li>a, >li>button{
                 color: #000;
                 text-decoration: none;
                 transition: color 0.2 ease;
+                font-family: Roboto;
+                font-size: 14px;
                 &:hover,
                 &.active{
                     color: $accent;
-                    margin: 4px 0;
+                    margin: 0px 0;
                 }
             }
         }

@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import hamburgerImage from '../../../../images/header/hamburger.svg'
 import hamburgerCloseImage from '../../../../images/hamburger-close.svg'
 import {menu} from './menuBase'
@@ -9,11 +9,14 @@ import { useAuth } from '../../../../hooks/useAuth'
 
 const Hamburger = () => {
     const {setIsAuth} = useAuth();
+    const navigate = useNavigate();
     const {ref, isComponentVisible, setIsComponentVisible} = useOutsideAlerter(false);
     const handleLogout = ()=>{
         localStorage.removeItem('token');
         setIsAuth(true);
         setIsComponentVisible(false);
+        navigate('/');
+        document.location.reload();//временный костыль
     };
 return (
     <div className={styles.wrapper} ref={ref}>
@@ -21,6 +24,7 @@ return (
       <img src={isComponentVisible?hamburgerCloseImage:hamburgerImage} 
       alt="Menu" 
       height='24'
+      width='27'
       draggable={false}/>
     </button>
     <nav className={`${styles.menu} ${isComponentVisible?styles.show:''}`}>
@@ -33,7 +37,7 @@ return (
              ))
         }
         <li>
-            <button onClick={handleLogout}>Logout</button>
+            <button onClick={handleLogout}>Выйти</button>
         </li>
     </ul>
     </nav>

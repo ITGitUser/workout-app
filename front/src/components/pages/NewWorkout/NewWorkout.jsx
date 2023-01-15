@@ -52,23 +52,23 @@ $api({
     };
     return (
         <>
-        <Layout bgImage={bgImage} heading='Craete new workout'/> 
+        <Layout bgImage={bgImage} heading='Новая тренировка'/> 
             <div className='wrapper-inner-page'>
                 {error && <Alert type='error' text={error}/>}
                 {isSuccessMutate && <Alert text='Workouts created'/>}
                 {isLoading && <Loader/>}
                 <form onSubmit={handleSubmit}>
                     <Field
-                    placeholder = 'Enter name'
+                    placeholder = 'Введите название тренировки'
                     value = {name}
                     onChange = {e => setName(e.target.value)}
                     required/>
-                    <Link to='/new-exercise' className='dark-link'>Add new exercise</Link>
+                    <Link to='/new-exercise' className='dark-link'>Добавить новое упражнение</Link>
                     {isSuccess && data && (
                     <ReactSelect
                         classNamePrefix='select2-selection'
-                        placeholder='Exercises...'
-                        title='Exercises'
+                        placeholder='Упражнения...'
+                        title='Упражнения'
                         options={
                             data.map(ex=>({
                                 value: ex._id,
@@ -79,7 +79,7 @@ $api({
                         onChange={setExercisesCurrent}
                         isMulti={true}
                     />)}
-                    <Button text = 'Create' callback={ ()=>{} }></Button>
+                    <Button text = 'Создать' callback={ ()=>{} }></Button>
                 </form>
             </div>
             </>

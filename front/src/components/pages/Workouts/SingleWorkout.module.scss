@@ -11,10 +11,14 @@
         margin-bottom: 30px;
         background-color: $purple;
         color: $white;
-        padding: 14px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         width:  90%;
         border-radius: 10px;
-        > a, button{
+        > a, >button{
+            padding:14px 20px;
+            text-align: left;
             font-size: 20px;
             color: $white;
             text-decoration: none;
@@ -28,12 +32,18 @@
             @media(max-width: $mobile){
                 font-size: 18px;
             }
-
+            
         }
-        &.finished{
-            background-color: $dark-purple;
+        >img{
+            margin-right: 10px;
+            opacity: 0.6;
+            
+        }
+        &.completed{
+            background-color: $dark-purple !important;
         }
     }
+    
 
     .line{
         width: 100%;

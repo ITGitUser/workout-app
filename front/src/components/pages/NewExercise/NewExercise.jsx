@@ -46,7 +46,7 @@ const NewExercise = () => {
     };
     return (
         <>
-        <Layout bgImage={bgImage} heading='Craete new exercise'/> 
+        <Layout bgImage={bgImage} heading='Новое упражнение'/> 
             <div className='wrapper-inner-page'>
                 {error && <Alert type='error' text={error}/>}
                 {isSuccess && <Alert text='Exercise created'/>}
@@ -58,7 +58,7 @@ const NewExercise = () => {
                     onChange = {e => setName(e.target.value)}
                     required/>
                     <Field
-                    placeholder = 'Введите время'
+                    placeholder = 'Введите кол-во подходов'
                     value = {times}
                     onChange = {e => setTimes(e.target.value)}
                     required/>
