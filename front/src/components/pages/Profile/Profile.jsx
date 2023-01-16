@@ -55,7 +55,7 @@ const Profile = () => {
                             <div className={styles.item} key={`workouts ${idx}`}>
                                 <button 
                                 aria-label='workouts completed'>
-                                 <span>{workouts.workout.name}</span> 
+                                 <span>{workouts.workout?.name}</span> 
                                  <div className={styles.date}>{new Date(workouts.updatedAt).toLocaleDateString("ru", options)}</div>    
                                 </button>   
                             </div>  

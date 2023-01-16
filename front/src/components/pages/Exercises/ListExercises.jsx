@@ -64,8 +64,9 @@ const ListExercises = () => {
                                     height='34' 
                                     alt='удалить'
                                     draggable={false}
-                                    onClick={ ()=>
-                                        deleteExercise( ex._id)
+                                    onClick={ () => { if (window.confirm(`Вы действтельно хотите удалить "${ex.name}"?`)){deleteExercise( ex._id)} }
+                                        
+                                        
                                         }/>
                                         
                                 </div>  

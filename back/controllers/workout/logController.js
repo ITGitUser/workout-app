@@ -14,10 +14,11 @@ export const createNewWorkoutLog=asyncHandler (async (req,res)=>{
 
     const workOut = await Workout.findById(workoutId).populate('exercises');
 
+    const work = {_id: workOut._id, name: workOut.name};
     if (workOut) {
         const workoutLog1 = await WorkoutLog.create({
             user,
-            workout: workOut,
+            workout: work,
             
         });
         
@@ -63,7 +64,6 @@ export const createNewWorkoutLog=asyncHandler (async (req,res)=>{
 //@access Private
 export const getWorkoutLog=asyncHandler (async (req,res)=>{
     const workoutLog = await WorkoutLog.findById(req.params.id)
-    .populate('workout')
     .populate({
         path: 'exerciseLog',
         populate: {
@@ -72,7 +72,9 @@ export const getWorkoutLog=asyncHandler (async (req,res)=>{
     })
     .lean();
 
-    const minutes = Math.ceil(workoutLog.workout.exercises.length*3.7);
+    const workOut = await Workout.findById(workoutLog.workout._id).populate('exercises');
+
+    const minutes = Math.ceil(workOut.exercises.length*3.7);
 
     res.json({workoutLog, minutes});
 

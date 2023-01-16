@@ -4,10 +4,11 @@ import deleteImage from '../../../images/delete.svg';
 import styles from './SingleWorkout.module.scss'
 import { useMutation, useQuery } from 'react-query';
 import { $api } from '../../../api/api';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Alert from '../../ui/Alert/Alert';
 import Layout from '../../common/Header/Layout';
 import Loader from '../../ui/Loader';
+
 
 
 
@@ -40,7 +41,6 @@ const ListWorkouts = () => {
     const {
         mutate: deleteWorkout,  
        //isSuccess: isSuccessMutate, 
-        error: deleteError,
     }=useMutation('Delete workout', (workId)=>
     $api({
         url: `/workouts/${workId}`,
@@ -79,9 +79,8 @@ const ListWorkouts = () => {
                                     height='34' 
                                     alt='удалить'
                                     draggable={false}
-                                    onClick={ ()=>
-                                        deleteWorkout( workout._id
-                                        )}/>
+                                    onClick={  () => { if (window.confirm(`Вы действтельно хотите удалить "${workout.name}"?`)){deleteWorkout( workout._id)} } }  
+                                         />
                                         
                                 </div>  
                                                            

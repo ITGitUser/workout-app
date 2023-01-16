@@ -1,0 +1,11 @@
+@import '../../../scss/variables';
+
+.confirm{
+    min-width: 200px;
+    min-height: 60px;
+    background-color: $dark-purple;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    z-index: 999;
+}

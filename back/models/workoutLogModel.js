@@ -9,11 +9,23 @@ const workoutLogSchema=mongoose.Schema(
           ref: 'User',
           required: true
       },
+      /*
       workout: {
         type: ObjectId,
         ref: 'Workout',
         required: true
-    },
+    },*/
+    workout: 
+      { 
+        _id: {
+        type: String,
+        required: true,
+        },
+        name: {
+          type: String,
+          required: true,
+        }
+      },
       completed:{
             type: Boolean,
             default: false
