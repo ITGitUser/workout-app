@@ -9,7 +9,16 @@ import { $api } from '../../../api/api';
 import Header from '../../common/Header/Header';
 import Counters from '../../ui/Counters/Counters';
 
-
+var options = {
+    hour: 'numeric',
+    minute: 'numeric',
+    year: 'numeric',
+    month: 'numeric',
+    day: 'numeric',
+    weekday: 'short',
+    timezone: 'UTC',
+    
+  };
 
 const Profile = () => {
     const {data, isSuccess} = useQuery('home page counters', ()=>
@@ -20,7 +29,7 @@ const Profile = () => {
             refetchOnWindowFocus: false,
         }
     );
-   
+    //const workoutsCompleted= data.workoutsLogsCompleted;
     return (
         <>
         <div 
@@ -41,6 +50,17 @@ const Profile = () => {
             className='wrapper-inner-page'
             style={{paddingLeft: 0, paddingRight:0}}
             >
+                 <div className={styles.wrapper}>
+                {data?.workoutsLogsCompleted.map((workouts, idx)=>(
+                            <div className={styles.item} key={`workouts ${idx}`}>
+                                <button 
+                                aria-label='workouts completed'>
+                                 <span>{workouts.workout.name}</span> 
+                                 <div className={styles.date}>{new Date(workouts.updatedAt).toLocaleDateString("ru", options)}</div>    
+                                </button>   
+                            </div>  
+                    ))}
+                    </div>
                 <div className={styles.before_after}>
                     <div>
                         <div className={styles.heading}>До</div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import bgImage from '../../../images/workout-bg.jpg';
 import deleteImage from '../../../images/delete.svg';
-import styles from '../Workouts/SingleWorkout.module.scss'//одинаковые стили для списка упражнений и списка тренировок
+import styles from './Exercises.module.scss'
 import { useMutation, useQuery } from 'react-query';
 import { $api } from '../../../api/api';
 import Alert from '../../ui/Alert/Alert';
@@ -44,12 +44,18 @@ const ListExercises = () => {
                 {deleteError && <Alert type='error' text={deleteError}/>}
                 {isLoading && <Loader/>}
                 {isSuccess ? (
-                    <div className={styles.wrapper}>
+                    <div className={styles.wrapperList}>
                         {data.map((ex, idx)=>(
                             
                                 <div className={styles.item} key={`exercise ${idx}`}>
+                                    <img 
+                                        height='35' 
+                                        alt={ex.imageName}
+                                        draggable={false}
+                                         src={`/uploads/exercises/${ex.imageName}.svg`} />
                                     <button 
                                     aria-label=''>
+                                        
                                         <span>{ex.name}</span>
                                         
                                     </button>

@@ -94,3 +94,19 @@ export const updateCompleteWorkoutLog=asyncHandler (async (req,res)=>{
     const updateLog = await currentLog.save();
     res.json(updateLog);
 });
+
+//@desc   deleted workout log completed
+//@route  DELETE /api/workouts/completed/:id
+//@access Private
+export const deleteWorkoutLog=asyncHandler (async (req,res)=>{
+    const currentLog = await WorkoutLog.findById(req.params.id);
+
+    if(!currentLog) {
+        res.status(404);
+        throw new Error(`Данный ${req.params.id} лог не найдена!`);
+    }
+
+    await currentLog.remove();
+
+    res.json({message: 'Тренировка удалена'});
+});

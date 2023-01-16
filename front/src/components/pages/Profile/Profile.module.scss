@@ -29,3 +29,50 @@
     text-align: center;
     margin: 6px 0 18px;
 }
+
+
+@import '../../../scss/variables';
+
+.time{
+    color: #deb6b6;
+    font-size: 20px;
+}
+
+.wrapper{
+    > div.item{
+        margin: 0 auto;
+        margin: 20px;
+        background-color: $purple;
+        color: $white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width:  90%;
+        border-radius: 10px;
+        > a, >button{
+            padding:14px 20px;
+            text-align: left;
+            font-size: 20px;
+            color: $white;
+            text-decoration: none;
+            display: block;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            @media(max-width: $mobile){
+                font-size: 18px;
+            }
+            >.date{
+                margin-top: 5px;
+                color: $accent;
+                opacity: 0.7;
+                font-size: 15px;
+            }
+            
+        }
+    
+       
+    }
+
+}

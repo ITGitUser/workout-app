@@ -32,7 +32,7 @@
                 padding: 15px 10px;
                 width: 35%;
             }
-
+            
             >i,
             >span,
             >input{
@@ -102,6 +102,49 @@
         }
         .opacity{
             opacity: 0.7;
+        }
+    }
+}
+
+
+
+.wrapperList{
+    > div.item{
+        margin: 0 auto;
+        margin-bottom: 30px;
+        background-color: $purple;
+        color: $white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width:  90%;
+        border-radius: 10px;
+        > a, >button{
+            padding:14px 20px;
+            text-align: left;
+            font-size: 20px;
+            color: $white;
+            text-decoration: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            @media(max-width: $mobile){
+                font-size: 18px;
+            }
+            
+        }
+        >img{
+            margin-right: 10px;
+            margin-left: 10px;
+            opacity: 0.6;
+            
+        }
+        &.completed{
+            background-color: $dark-purple !important;
         }
     }
 }

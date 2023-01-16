@@ -35,7 +35,14 @@ export const getUserProfile=asyncHandler (async (req,res)=>{
     const workoutsLogsCompleted = await WorkoutLog.find({
         user: user._id,
         completed: true,
-    });
+    }).populate('workout')
+    /*.populate({
+        path: 'exerciseLog',
+        populate: {
+            path: 'exercise',
+        },
+    })*/
+    .lean();
 
     res.json({
         ...user,
