@@ -130,7 +130,7 @@ const SingleExercise = () => {
                                     <div className={styles.opacity}>
                                         <input type='number' defaultValue={item.prevWeight} disabled/>
                                         <i>kg{item.completed?'':' '}/</i>
-                                        <input type='number' defaultValue={item.prevRepeat}disabled/>
+                                        <input type='number' defaultValue={item.prevRepeat} disabled/>
                                     </div>
 
                                     <div>

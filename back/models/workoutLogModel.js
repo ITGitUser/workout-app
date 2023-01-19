@@ -15,6 +15,7 @@ const workoutLogSchema=mongoose.Schema(
         ref: 'Workout',
         required: true
     },*/
+    //вместо предыдущего варианта, так как был баг, что при удалении workout, здесь было null и информация в профиле не выводилась
     workout: 
       { 
         _id: {

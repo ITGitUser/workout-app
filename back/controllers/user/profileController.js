@@ -42,7 +42,19 @@ export const getUserProfile=asyncHandler (async (req,res)=>{
             path: 'exercise',
         },
     })*/
-    .lean();
+    .lean().sort({createdAt: 'desc'});
+
+    const workoutsLogsNoCompleted = await WorkoutLog.find({
+        user: user._id,
+        completed: false,
+    }).populate('workout')
+    .populate({
+        path: 'exerciseLog',
+        populate: {
+            path: 'exercise',
+        },
+    })
+    .lean().sort({createdAt: 'desc'});
 
     res.json({
         ...user,
@@ -50,5 +62,6 @@ export const getUserProfile=asyncHandler (async (req,res)=>{
         workoutsCount,
         kgs,
         workoutsLogsCompleted,
+        workoutsLogsNoCompleted,
     });
 });

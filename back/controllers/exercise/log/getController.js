@@ -18,6 +18,7 @@ export const getExerciseLog=asyncHandler (async (req,res)=>{
     const prevExerciseLogs = await ExerciseLog.find({
         user: req.user._id,
         exercise: exerciseLog._id,
+        completed: true,
     }).sort({createdAt: 'desc'});
 
     const prevExLog = prevExerciseLogs[0];
