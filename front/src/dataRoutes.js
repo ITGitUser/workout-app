@@ -1,10 +1,12 @@
 import Auth from "./components/pages/Auth/Auth";
+import EditingExercise from "./components/pages/Exercises/EditingExercise";
 import ListExercises from "./components/pages/Exercises/ListExercises";
 import SingleExercise from "./components/pages/Exercises/SingleExercise";
 import Home from "./components/pages/Home/Home";
 import NewExercise from "./components/pages/NewExercise/NewExercise";
 import NewWorkout from "./components/pages/NewWorkout/NewWorkout";
 import Profile from "./components/pages/Profile/Profile";
+import EditingWorkout from "./components/pages/Workouts/EditingWorkout";
 import ListWorkouts from "./components/pages/Workouts/ListWorkouts";
 import SingleWorkout from "./components/pages/Workouts/SingleWorkout";
 
@@ -46,6 +48,12 @@ export const routes = [
         auth: true
     },
     {
+        path: '/workout/edit/:id',
+        exact: false,
+        component: EditingWorkout,
+        auth: true
+    },
+    {
         path: '/workouts',
         exact: false,
         component: ListWorkouts,
@@ -62,6 +70,12 @@ export const routes = [
         path: '/exercises',
         exact: false,
         component: ListExercises,
+        auth: true
+    },
+    {
+        path: '/exercise/edit/:id',
+        exact: false,
+        component: EditingExercise,
         auth: true
     }
 ];

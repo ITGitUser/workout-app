@@ -1,6 +1,6 @@
 import express from 'express'
 import { protect } from '../middleware/authMiddleware.js';
-import {createNewExercise, deleteExercise, getExercises, updateExercise} from '../controllers/exercise/mainController.js';
+import {createNewExercise, deleteExercise, getExercise, getExercises, updateExercise} from '../controllers/exercise/mainController.js';
 import {createNewExerciseLog} from '../controllers/exercise/log/createController.js';
 import {getExerciseLog, getExerciseLogList} from '../controllers/exercise/log/getController.js';
 import {updateExerciseLog, updateCompleteExerciseLog} from '../controllers/exercise/log/updateController.js';
@@ -17,5 +17,7 @@ router.route('/log')
 .put(protect, updateExerciseLog);
 router.route('/log/completed').put(protect, updateCompleteExerciseLog);
 router.route('/log/:id').get(protect, getExerciseLog);
-router.route('/:id').delete(protect, deleteExercise);
+router.route('/:id')
+.get(protect, getExercise)
+.delete(protect, deleteExercise);
 export default router;

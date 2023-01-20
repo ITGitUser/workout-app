@@ -68,7 +68,7 @@ const SingleWorkout = () => {
                 </div>  
                 {isLoading || (isSuccess && data.workoutLog._id !== id )? ( <Loader/>):(
                     <div className={styles.wrapper}>
-                        {data.workoutLog.exerciseLog.map((exLog, idx)=>{
+                        {data?.workoutLog?.exerciseLog?.map((exLog, idx)=>{
                             return (
                                 <Fragment key={`ex log ${idx}`}>
                                 <div className={cn(styles.item, {
@@ -80,9 +80,9 @@ const SingleWorkout = () => {
                                     onClick = {()=>
                                         navigate(`/exercise/${exLog._id}`)
                                     }>
-                                    <span>{exLog.exercise.name}</span>
+                                    <span>{exLog.exercise?.name}</span>
                                     <img 
-                                    src={`/uploads/exercises/${exLog.exercise.imageName}.svg`} 
+                                    src={`/uploads/exercises/${exLog.exercise?.imageName}.svg`} 
                                     height='34' 
                                     alt=''
                                     draggable={false}/>

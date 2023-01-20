@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import bgImage from '../../../images/workout-bg.jpg';
 import deleteImage from '../../../images/delete.svg';
+import editImage from '../../../images/edit.svg';
 import styles from './SingleWorkout.module.scss'
 import { useMutation, useQuery } from 'react-query';
 import { $api } from '../../../api/api';
@@ -74,6 +75,14 @@ const ListWorkouts = () => {
                                         <span>{workout.name}</span>
                                         
                                     </button>
+                                   
+                                    <img 
+                                    src={editImage} 
+                                    height='32' 
+                                    alt='редактировать'
+                                    draggable={false}
+                                    onClick={  ()=>{ navigate(`/workout/edit/${workout._id}`) } }  
+                                         />
                                     <img 
                                     src={deleteImage} 
                                     height='34' 

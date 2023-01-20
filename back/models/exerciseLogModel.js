@@ -9,6 +9,23 @@ const exerciseLogSchema=mongoose.Schema(
           ref: 'User',
           required: true
       },
+      /*
+      exercise: 
+      { 
+        _id: {
+        type: String,
+        required: true,
+        },
+        name: {
+          type: String,
+          required: true,
+        }, 
+        imageName: {
+          type: String,
+          required: true,
+        }
+      },*/
+      
       exercise: {
         type: ObjectId,
         ref: 'Exercise',

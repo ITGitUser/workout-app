@@ -62,3 +62,19 @@ export const getExercises=asyncHandler (async (req,res)=>{
 
     res.json(exercises);
 });
+
+//@desc   Get exercise
+//@route  GET /api/exercises/:id
+//@access Private
+export const getExercise=asyncHandler (async (req,res)=>{
+    //const {exerciseId} = req.body;
+
+    const exercise = await Exercise.findById(req.params.id);
+
+if(!exercise) {
+        res.status(404);
+        throw new Error('Данное упражнение не найдено!');
+    }
+
+    res.json(exercise);
+});

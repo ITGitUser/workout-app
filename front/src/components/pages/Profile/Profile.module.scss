@@ -50,6 +50,8 @@
         width:  90%;
         border-radius: 10px;
         >img{
+            cursor:pointer;
+            opacity: 0.6;
             margin: 0 10px;
         }
         > a, >button{

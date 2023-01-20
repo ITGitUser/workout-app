@@ -19,7 +19,7 @@ export const getExerciseLog=asyncHandler (async (req,res)=>{
         user: req.user._id,
         exercise: exerciseLog.exercise._id,
         completed: true,
-    }).sort({createdAt: 'desc'});
+    }).sort({updatedAt: 'desc'});
 
     const prevExLog = prevExerciseLogs[0];
 
